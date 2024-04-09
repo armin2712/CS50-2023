@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+History
+{% endblock %}
+
+{% block main %}
+<div class="container py-4 text-center">
+<table class="table">
+    <tr>
+        <th class="text-start">Symbol</th>
+        <th class="text-end">Shares</th>
+        <th class="text-end">Price</th>
+        <th class="text-end">Transacted</th>
+    </tr>
+    {% for row in rows %}
+    <tr>
+        <td class="text-start">{{row.symbol}}</td>
+        <td class="text-end">{{row.shares}}</td>
+        <td class="text-end">{{usd(row.price)}}</td>
+        <td class="text-end">{{row.year}}-{{ '%02d' % row.month }}-{{ '%02d' % row.day }} {{ '%02d' % row.hours }}:{{ '%02d' % row.minutes }}:{{ '%02d' % row.seconds }}</td>
+
+    </tr>
+    {% endfor %}
+
+</table>
+</div>
+
+{% endblock %}

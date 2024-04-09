@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+
+{% block main %}
+
+
+<div class="container py-4 text-center">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="text-start">Symbol</th>
+                <th class="text-end">Name</th>
+                <th class="text-end">Shares</th>
+                <th class="text-end">Price</th>
+                <th class="text-end">TOTAL</th>
+            </tr>
+
+        </thead>
+        <tbody>
+        {% for row in rows %}
+
+        <tr>
+            <td class="text-start ">{{row.symbol}}</td>
+            <td class="text-end">{{lookup(row.symbol)['name']}}</td>
+            <td class="text-end">{{row.shares}}</td>
+            <td class="text-end">{{usd(lookup(row.symbol)['price'])}}</td>
+            <td class="text-end price">{{usd((lookup(row.symbol)['price']) * row.shares)}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td class="border-0 fw-bold text-end" colspan="4">Cash</td>
+            <td class="border-0 text-end price">{{usd(users[0].cash)}}</td>
+        </tr>
+        <tr>
+            <td class="border-0 fw-bold text-end" colspan="4">TOTAL</td>
+            <td id="total_sum" class="border-0 text-end"></td>
+        </tr>
+    </tfoot>
+    </table>
+    </div>
+    <script>
+        $(document).ready(function()
+        {
+                var total=0;
+                $('.price').each(function()
+                {
+                    var value=parseFloat($(this).text().replace('$','').replace(',','')) || 0;
+                    total+=value;
+
+                });
+                $('#total_sum').text('$'+ total.toLocaleString('en-US',{minimumFractionDigits:2, maximumFractionDigits:2}));
+            });
+        </script>
+
+{% endblock %}

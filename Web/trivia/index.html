@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            function free_check(){
+                    let field=document.querySelector('#input_answer');
+                    const resp_free=document.querySelector('.response_free');
+
+                    if( field.value==='blue whale'){
+                        field.style.backgroundColor='green';
+                        resp_free.textContent='Correct!';
+                    } else{
+                        field.style.backgroundColor='red';
+                        resp_free.textContent='Incorrect.';
+                    }
+            };
+            // TODO: Add code to check answers to questions
+            function check(i){
+                const answer_doc=document.querySelectorAll('.answer');
+                const resp=document.querySelector('.response');
+
+                if (answer_doc[i].classList.contains("correct")){
+                    answer_doc[i].style.backgroundColor='green';
+                    resp.textContent='Correct!';
+
+                }
+                else{
+                    answer_doc[i].style.backgroundColor='red';
+                    resp.textContent='Incorrect.';
+                }
+
+
+            }
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                <h3>What is the capital of England?</h3>
+                <button class="answer correct" onclick="check(0)">London</button>
+                <button class="answer wrong" onclick="check(1)">New York</button>
+                <button class="answer wrong" onclick="check(2)">Paris</button>
+                <button class="answer wrong" onclick="check(3)">Liverpool</button>
+            </div>
+            <p class="container response"></p>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3>What is the largest mammal in the World?</h3>
+                <form onsubmit="free_check(); return false;">
+                    <input id="input_answer" type="text">
+                <button type="submit">Submit answer</button>
+            </form>
+            <p class="container response_free"></p>
+            </div>
+        </div>
+    </body>
+</html>

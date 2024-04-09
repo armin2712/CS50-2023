@@ -1,0 +1,17 @@
+sort1 uses: TODO
+Bubble
+
+How do you know?: TODO
+ako je vec sortan ne treba mu mnogo vremena
+
+sort2 uses: TODO
+Merge
+mnogo brzi i efikasniji od druga dva primjera bez obzira na broj
+
+How do you know?: TODO
+
+sort3 uses: TODO
+selection
+dugo trajanje na sortan i nesortan
+
+How do you know?: TODO
